@@ -1,2 +1,55 @@
-# vpl
-An all-in-one library for diverse data structures aimed at simplifying C development
+<div align="center">
+  <h1> :rhinoceros: vpl library :deciduous_tree: </h1>
+</div>
+
+<h6>:sauropod: <a href="https://docs.google.com/spreadsheets/d/12RhVSTslhoTmQBS2GdamtBuyE6NlCEwYNQcIRXHaVoQ/edit?usp=sharing">REFERENCE</a></h6>
+
+<h6> 🐛 LINEAR DATA STRUCTURES </h6>
+<ul>
+  <li>Dynamic array</li>
+</ul>
+
+<ul>
+  <li>Single linked list</li>
+  <li>Doubly linked list</li>
+  <li>Circular linked list</li>
+  <li>Doubly linked list /w Header</li>
+</ul>
+
+<ul>
+  <li>Stack /u array</li>
+  <li>Stack /u linked list</li>
+</ul>
+
+<ul>
+  <li>Queue /u linked list</li>
+  <li>Circular queue /u array</li>
+  <li>Deque double ended queue</li>
+  <li>Priority queue</li>
+</ul>
+
+
+---
+
+<h6> NON-LINEAR DATA STRUCTURES </h6>
+
+
+---
+
+```
+                                       `. ___
+                                      __,' __`.                _..----....____
+                          __...--.'``;.   ,.   ;``--..__     .'    ,-._    _.-'
+                    _..-''-------'   `'   `'   `'     O ``-''._   (,;') _,'   Pheee..
+                  ,'________________                          \`-._`-','
+                   `._              ```````````------...___   '-.._'-:
+                      ```--.._      ,.                     ````--...__\-.
+                              `.--. `-`                       ____    |  |` -  .
+                                `. `.                       ,'`````.  ;  ;`   -  -
+                                  `._`.        __________   `.      \'__/`  -
+                                     `-:._____/______/___/____`.     \  `
+                                                 |       `._    `.    \
+                                                 `._________`-.   `.   `.___
+                                                                    `------'`
+
+```
