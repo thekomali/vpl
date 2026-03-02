@@ -6,7 +6,7 @@
 
 <h6> 🐛 LINEAR DATA STRUCTURES </h6>
 <ul>
-  <li>Dynamic array</li>
+  <li ><a href="include/vpl/dynamic_array.h">Dynamic array</a> :copyright: </li>
 </ul>
 
 <ul>

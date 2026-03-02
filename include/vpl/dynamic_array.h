@@ -119,4 +119,8 @@ typedef struct darray {
  */
 darray_t* darray_init(size_t capacity);
 
+/**
+ * @brief Free the dynamic array along with individual elements
+ * @params **da - reference of reference to darray_t
+ */
 void darray_free(darray_t **da);
