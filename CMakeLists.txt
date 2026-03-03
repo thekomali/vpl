@@ -6,7 +6,7 @@ project(VPL C)
 # specify C standard
 set(CMAKE_C_STANDARD_REQUIRED True)
 
-# find for CUnit testing library
+# check for CUnit testing library installation
 find_library(CUNIT_LIB cunit)
 if(NOT CUNIT_LIB)
   message(FATAL_ERROR "CUnit library not found! Please install it.")
@@ -32,6 +32,7 @@ include_directories(include)
 # include these source files
 set(SOURCES
     src/dynamic_array.c
+    src/linked_list.c
 )
 
 # create a static library from the specified source files
@@ -40,6 +41,7 @@ add_library(dsa STATIC ${SOURCES})
 # include the test files
 set(TEST_SOURCES
     tests/test_dynamic_array.c
+    tests/test_linked_list.c
 )
 
 # create seperate executable for each test files
