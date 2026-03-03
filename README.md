@@ -11,7 +11,7 @@
 
 <ul>
   <li><a href="include/vpl/linked_list.h">Single linked list</a></li>
-  <li>Doubly linked list</li>
+  <li><a href="include/vpl/doubly_linkedlist.h">Doubly linked list</a></li>
   <li>Circular linked list</li>
   <li>Doubly linked list /w Header</li>
 </ul>
