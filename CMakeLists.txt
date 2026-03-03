@@ -33,6 +33,7 @@ include_directories(include)
 set(SOURCES
     src/dynamic_array.c
     src/linked_list.c
+    src/doubly_linkedlist.c
 )
 
 # create a static library from the specified source files
@@ -42,6 +43,7 @@ add_library(dsa STATIC ${SOURCES})
 set(TEST_SOURCES
     tests/test_dynamic_array.c
     tests/test_linked_list.c
+    tests/test_doubly_linkedlist.c
 )
 
 # create seperate executable for each test files

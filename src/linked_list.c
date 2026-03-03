@@ -1,6 +1,4 @@
 #include "../include/vpl/linked_list.h"
-#include <stdlib.h>
-#include <string.h>
 
 // ============================================
 // Forward declarations (what this module provides)

@@ -5,35 +5,7 @@
 #include <string.h>
 #include <stdbool.h>
 
-
-/**
- * @brief Enum to identify the type of value in the array
- */
-typedef enum {INT, DOU, STR} etype_t;
-
-
-/**
- * @brief Struct to represent a single value in the array
- */
-typedef struct {
-  // determines the value present in the union
-  etype_t etype;
-
-  union {
-    int    ival;
-    double dval;
-    char   *sval;
-  } value;
-} element_t;
-
-
-/**
- * @brief Struct to represent a single node in the linked list
- */
-typedef struct node{
-  element_t data;         ///< data memeber of the node
-  struct node *next;      ///< pointer refers to next node
-} node_t;
+#include "util.h"
 
 
 /**

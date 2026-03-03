@@ -10,27 +10,6 @@
 
 
 /**
- * @brief Enum to identify the type of value in the array
- */
-typedef enum {INT, DOU, STR} etype_t;
-
-
-/**
- * @brief Struct to represent a single value in the array
- */
-typedef struct {
-  // determines the value present in the union
-  etype_t etype;
-
-  union {
-    int    ival;
-    double dval;
-    char   *sval;
-  } value;
-} element_t;
-
-
-/**
  * @brief Struct to represent the dynamic array
  *
  * Contains the function pointers to all the functions that operate on
