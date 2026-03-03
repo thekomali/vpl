@@ -6,11 +6,11 @@
 
 <h6> 🐛 LINEAR DATA STRUCTURES </h6>
 <ul>
-  <li ><a href="include/vpl/dynamic_array.h">Dynamic array</a> :copyright: </li>
+  <li ><a href="include/vpl/dynamic_array.h">Dynamic array</a></li>
 </ul>
 
 <ul>
-  <li>Single linked list</li>
+  <li><a href="include/vpl/linked_list.h">Single linked list</a></li>
   <li>Doubly linked list</li>
   <li>Circular linked list</li>
   <li>Doubly linked list /w Header</li>
