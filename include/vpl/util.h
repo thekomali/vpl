@@ -1,3 +1,10 @@
+#pragma once
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <stdbool.h>
+
 // do..while block is used not to provide looping but, it's
 // a trick used to consider all the statments in one block
 #define SWAP(a, b) \
@@ -16,16 +23,18 @@
 
   /**
    * @brief Struct to represent a single value
+   *
+   * Make sure in struct, largest members are placed first followed by smallest members
+   * so that the overall size of struct is minimized by avoiding padding spaces
    */
   typedef struct {
-    // determines the value present in the union
-    etype_t etype;
-
-    union {
+    union {             // holds data of any one of the type
       int    ival;
       double dval;
       char   *sval;
     } value;
+
+    etype_t etype;      // determines the type of data in the union
   } element_t;
 
 
@@ -42,7 +51,7 @@
    * @brief Struct to represent a single node in the doubly linked list
    */
   typedef struct dnode{
-    element_t data;         ///< data memeber of the node
+    element_t data;          ///< data memeber of the node
     struct dnode *next;      ///< pointer refers to next node
     struct dnode *prev;      ///< pointer refers to previous node
   } dnode_t;
