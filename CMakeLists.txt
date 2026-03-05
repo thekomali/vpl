@@ -35,6 +35,7 @@ set(SOURCES
     src/linked_list.c
     src/doubly_linkedlist.c
     src/stack.c
+    src/stack_ll.c
 )
 
 # create a static library from the specified source files
@@ -46,6 +47,7 @@ set(TEST_SOURCES
     tests/test_linked_list.c
     tests/test_doubly_linkedlist.c
     tests/test_stack.c
+    tests/test_stackll.c
 )
 
 # create seperate executable for each test files
