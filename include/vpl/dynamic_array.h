@@ -1,88 +1,45 @@
 #pragma once
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <stdbool.h>
-#include <math.h>
-
 #include "util.h"
 
 
 /**
- * @brief Struct to represent the dynamic array
+ * @file dynamic_array.h
+ * @brief Dynamic Array (heterogenous data types)
  *
- * Contains the function pointers to all the functions that operate on
- * the dynamic array
+ * @note array size doubles every time it fills up
+ * @note element_t struct is used to hold different types of data
  */
+
+
+/// Struct to represent the dynamic array
 typedef struct darray {
-  int size;              ///< no of elements in array
-  size_t capacity;       ///< no of elements the array can hold
-  element_t **arr;       ///< array that holds pointers to element_t
-
-
-  /**
-   * @brief Get the element present at the index position
-   * @param self - reference to darray_t struct
-   * @param index - element to get from
-   * @return reference to element_t struct, NULL if invalid index or not present
-   */
+  /// Get the data at the index position
   element_t* (* get)(struct darray *self, int index);
 
-  /**
-   * @brief Append an element at the end of the arrayfv
-   * @param self - reference to darray_t struct
-   * @param etype - enum type to identify the type of value
-   * @param *value - void pointer to the value to be appended
-   * @return index of insert position, -1 if append failure
-   *
-   * automatically resizes the array if the size is equal to capacity
-   */
+  /// Append the data at the end of the array
   int (* append)(struct darray *self, etype_t etype, void *value);
 
-  /**
-   * @brief Insert an element at the given position
-   * @param self - reference to darray_t struct
-   * @param index - insert position
-   * @param etype - enum type to identify the type of value
-   * @param *value - void pointer to the value to be appended
-   * @return 1 on success 0 on failure
-   *
-   * automatic resize happens if the size if equals capacity
-   * move all the element from insert position to right
-   */
+  /// Insert the data at the index position
+  /// Automatically resize in case the size equals capacity
+  /// Move all the data from insert positon to right
   bool (* insert)(struct darray *self, int index, etype_t etype, void *value);
 
-  /**
-   * @brief Pops the last element from the array
-   * @param self - reference to darray_t struct
-   * @return reference to element_t struct, NULL if no element
-   */
+  /// Pop the last data
   element_t* (* pop)(struct darray *self);
 
-  /**
-   * @brief Remove the first occurrence of the element in the array
-   * @param self - reference to darray_t struct
-   * @param etype - enum type to identify the type of value
-   * @param *value - void pointer to the value to be appended
-   * @return 1 on success 0 on failure
-   */
+  /// Remove the first occurrence of the data in the array
   bool (* remove)(struct darray *self, etype_t etype, void *value);
 
-  /**
-   * @brief Index of first occurrence of the value
-   * @param self - reference to darray_t struct
-   * @param etype - enum type to identify the type of value
-   * @param *value - void pointer to the value to be appended
-   * @return index of first occurrence
-   */
+  /// Get the index of first occurrence of the data, -1 if not present
   int (* index)(struct darray *self, etype_t etype, void *value);
 
-  /**
-   * @brief Reverse the array in-place
-   * @param self - reference to darray_t struct
-   */
+  /// Reverse the array
   void (* reverse)(struct darray *self);
+
+  element_t **arr;       ///< array that holds pointers to element_t
+  size_t capacity;       ///< no of elements the array can hold (resizes automatically)
+  int size;              ///< no of elements in array
 } darray_t;
 
 
@@ -90,7 +47,6 @@ typedef struct darray {
 // ============================================
 // Function Declarations
 // ============================================
-
 /**
  * @brief Allocate memory for darray_t and initialize with value
  * @params capacity - initial size of the array to allocate

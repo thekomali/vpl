@@ -1,85 +1,58 @@
 #pragma once
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <stdbool.h>
-
 #include "util.h"
 
 
-
 /**
- * @brief Struct to represent a linked list
+ * @file doubly_linkedlist.h
+ * @brief Doubly Linked List Implementation
+ *
+ * @note node contains => data + prev_ptr + next_ptr
+ * @note tail node reference is tracked (makes pop() operates at O(1) time)
+ * @note size is used to track no of nodes
  */
+
+
+/// Struct to represent a Doubly Linked List
 typedef struct dlinkedlist{
-    int size;            ///< no of nodes in a linked list
-    dnode_t *head;        ///< reference to head node
-    dnode_t *tail;       ///< reference to tail node
+  /// Get the node at the index position
+  dnode_t* (* get)(struct dlinkedlist *self, int index);
 
-    /**
-     * @brief Get the node at the index positon
-     * @param self - reference to dlinkedlist_t
-     * @param index - position to get
-     * @return reference to node_t else NULL
-     */
-    dnode_t* (* get)(struct dlinkedlist *self, int index);
+  /// Append the data at the end of the list
+  int (* append)(struct dlinkedlist *self, etype_t etype, void *val);
 
-    /**
-     * @brief Insert value at the end of the linked list
-     * @param self - reference to dlinkedlist_t
-     * @param etype - type of the value the void pointer points
-     * @param *val - value as void pointer
-     *
-     * Use of tail pointer, make the append with O(1) complexit
-     */
-    int (* append)(struct dlinkedlist *self, etype_t etype, void *val);
+  /// Insert the data at the index positon
+  bool (* insert)(struct dlinkedlist *self, int index, etype_t etype, void *val);
 
-    /**
-     * @brief Insert value at the index position
-     * @param self - reference to dlinkedlist_t
-     * @param index - insert positon
-     * @param etype - type of the value the void pointer points
-     * @param *val - value as void pointer
-     */
-    bool (* insert)(struct dlinkedlist *self, int index, etype_t etype, void *val);
+  /// Pop the last data
+  dnode_t* (* pop)(struct dlinkedlist *self);
 
-    /**
-     * @brief Pop the last node
-     * @param self - reference to dlinkedlist_t
-     * @return popped node (caller expected to free the memeory)
-     */
-    dnode_t* (* pop)(struct dlinkedlist *self);
+  /// Remove the data at the index position
+  bool (* remove)(struct dlinkedlist *self, etype_t etype, void *val);
 
-    /**
-     * @brief Remove node at any given positon
-     * @param self - reference to dlinkedlist_t
-     * @param etype - type of the value the void pointer points
-     * @param *val - value as void pointer
-     */
-    bool (* remove)(struct dlinkedlist *self, etype_t etype, void *val);
+  /// Get the index of first occurrence of the given value
+  int (* index)(struct dlinkedlist *self, etype_t etype, void *val);
 
-    /**
-     * @brief Get the index of the given value
-     * @param self - reference to dlinkedlist_t
-     * @param etype - type of the value the void pointer points
-     * @param *val - value as void pointer
-     * @return first occurrence of the value, if not return -1
-     */
-    int (* index)(struct dlinkedlist *self, etype_t etype, void *val);
+  /// Reverse the list
+  void (* reverse)(struct dlinkedlist *self);
 
-    /**
-     * @brief Rever the linked list in-place
-     * @param self - reference to dlinkedlist_t
-     */
-    void (* reverse)(struct dlinkedlist *self);
+  dnode_t *head;       ///< reference to head node
+  dnode_t *tail;       ///< reference to tail node
+  int size;            ///< no of nodes in a linked list
 }dlinkedlist_t;
 
 
 // ============================================
 // Function Declarations
 // ============================================
-
+/**
+ * @brief Allocated memory for dlinkedlist_t struct
+ * @return Pointer to initialized linkedlist_t struct or NULL on error
+ */
 dlinkedlist_t* dlinkedlist_init();
 
-void dlinkedlist_free(dlinkedlist_t **ll);
+/**
+ * @brief Free the dlinkedlist_t's memory and set it to NULL pointer
+ * @param **ll - pointer to pointer to dlinkedlist_t struct
+ */
+void dlinkedlist_free(dlinkedlist_t **dll);
