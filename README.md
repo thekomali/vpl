@@ -17,7 +17,7 @@
 </ul>
 
 <ul>
-  <li>Stack /u array</li>
+  <li><a href="include/vpl/stack.h">Stack /u array</a></li>
   <li>Stack /u linked list</li>
 </ul>
 
