@@ -22,7 +22,7 @@
 </ul>
 
 <ul>
-  <li>Queue /u linked list</li>
+  <li><a href="include/vpl/queue_ll.h">Queue /u linked list</a></li>
   <li>Circular queue /u array</li>
   <li>Deque double ended queue</li>
   <li>Priority queue</li>
