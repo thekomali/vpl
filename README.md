@@ -20,7 +20,7 @@
 | | |
 | <a href="include/vpl/queue_ll.h">Queue /u linked list</a> | v0.0 | - |
 | <a href="include/vpl/queue.h">Queue /u circular array</a> | v0.0 | - |
-| Double ended queue | - | - |
+| <a href="include/vpl/deque.h">Double ended queue</a> | - | - |
 | Priority queue | - | - |
 
 ---
