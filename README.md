@@ -5,33 +5,27 @@
 <h6>:sauropod: <a href="https://docs.google.com/spreadsheets/d/12RhVSTslhoTmQBS2GdamtBuyE6NlCEwYNQcIRXHaVoQ/edit?usp=sharing">REFERENCE</a></h6>
 
 <h6> 🐛 LINEAR DATA STRUCTURES </h6>
-<ul>
-  <li ><a href="include/vpl/dynamic_array.h">Dynamic array</a></li>
-</ul>
 
-<ul>
-  <li><a href="include/vpl/linked_list.h">Single linked list</a></li>
-  <li><a href="include/vpl/doubly_linkedlist.h">Doubly linked list</a></li>
-  <li>Circular linked list</li>
-  <li>Doubly linked list /w Header</li>
-</ul>
-
-<ul>
-  <li><a href="include/vpl/stack.h">Stack /u array</a></li>
-  <li><a href="include/vpl/stack_ll.h">Stack /u linked list</li>
-</ul>
-
-<ul>
-  <li><a href="include/vpl/queue_ll.h">Queue /u linked list</a></li>
-  <li><a href="include/vpl/queue.h">Circular queue /u array</a></li>
-  <li>Deque double ended queue</li>
-  <li>Priority queue</li>
-</ul>
-
+| Data Structure | Version | Notes |
+|----------------|---------|-------|
+| <a href="include/vpl/dynamic_array.h">Dynamic array</a> | v0.0 | - |
+| | |
+| <a href="include/vpl/linked_list.h">Single linked list</a> | v0.0 | - |
+| <a href="include/vpl/doubly_linkedlist.h">Doubly linked list</a> | v0.0 | - |
+| Circular linked list | - | - |
+| Doubly linked list /w Header | - | -|
+| | |
+| <a href="include/vpl/stack.h">Stack /u array</a> | v0.0 | - |
+| <a href="include/vpl/stack_ll.h">Stack /u linked list</a> | v0.0 | - |
+| | |
+| <a href="include/vpl/queue_ll.h">Queue /u linked list</a> | v0.0 | - |
+| <a href="include/vpl/queue.h">Queue /u circular array</a> | v0.0 | - |
+| Double ended queue | - | - |
+| Priority queue | - | - |
 
 ---
 
-<h6> NON-LINEAR DATA STRUCTURES </h6>
+<h6> 👾 NON-LINEAR DATA STRUCTURES </h6>
 
 
 ---
