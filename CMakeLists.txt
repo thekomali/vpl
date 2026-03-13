@@ -36,6 +36,7 @@ set(SOURCES
     src/doubly_linkedlist.c
     src/stack.c
     src/stack_ll.c
+    src/queue.c
     src/queue_ll.c
 )
 
@@ -49,6 +50,7 @@ set(TEST_SOURCES
     tests/test_doubly_linkedlist.c
     tests/test_stack.c
     tests/test_stackll.c
+    tests/test_queue.c
     tests/test_queue_ll.c
 )
 
