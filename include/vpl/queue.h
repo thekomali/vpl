@@ -10,6 +10,9 @@
  * and it's easy for caching and avoid fragmentation, which will happen if
  * array of element_t pointers is used.
  *
+ * @note enqueue - increment rear and add element
+ * @note dequeue - remove element and decrement front
+ *
  * @note rear == front == -1 ; queue is is_empty
  * @note rear == front != -1 ; queue has only one element
  * @note rear + 1 == front   ; queue is full
