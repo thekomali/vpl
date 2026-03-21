@@ -39,6 +39,7 @@ set(SOURCES
     src/queue.c
     src/queue_ll.c
     src/deque.c
+    src/deque_ll.c
 )
 
 # create a static library from the specified source files
@@ -54,6 +55,7 @@ set(TEST_SOURCES
     tests/test_queue.c
     tests/test_queue_ll.c
     tests/test_deque.c
+    tests/test_deque_ll.c
 )
 
 # create seperate executable for each test files

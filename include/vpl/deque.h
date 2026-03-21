@@ -6,6 +6,11 @@
  * @file deque.h
  * @brief Double Ended Queue implementation using circular array
  *
+ * flexiable array members is used instead of pointer of arrays
+ * so that memory is allocated along with the struct and each element is continuous
+ * which allows CPU to access data at faster rate, without hopping to different
+ * memory locations pointed by the array of pointers
+ *
  * @note enqueue_front - decrement front and add element
  * @note enqueue_rear  - increment rear and add element
  * @note dequeue_front - remove element and increment front
