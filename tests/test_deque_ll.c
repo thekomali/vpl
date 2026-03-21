@@ -11,7 +11,7 @@ int clean_suite(void) { return 0; }
  * @brief Test Initialization and Empty State
  */
 void test_init_and_empty(void) {
-  dequell_t *dq = dequell_init();
+  DequeLL *dq = dequell_init();
   CU_ASSERT_PTR_NOT_NULL(dq);
   CU_ASSERT_TRUE(dq->is_empty(dq));
   CU_ASSERT_EQUAL(dq->size, 0);
@@ -23,7 +23,7 @@ void test_init_and_empty(void) {
  * @brief Test Enqueue and Dequeue Front (Normal & Edge Cases)
  */
 void test_front_operations(void) {
-  dequell_t *dq = dequell_init();
+  DequeLL *dq = dequell_init();
   int val1 = 10;
 
   // Edge Case: Dequeue from empty
@@ -54,7 +54,7 @@ void test_front_operations(void) {
  * @brief Test Rear Operations and Mixed Enqueue/Dequeue
  */
 void test_rear_and_mixed(void) {
-  dequell_t *dq = dequell_init();
+  DequeLL *dq = dequell_init();
   int v1 = 1, v2 = 2;
   char *s1 = "hello";
 
@@ -80,7 +80,7 @@ void test_rear_and_mixed(void) {
  * @brief Test String Deep Copying and Freeing
  */
 void test_string_handling(void) {
-  dequell_t *dq = dequell_init();
+  DequeLL *dq = dequell_init();
   char str[] = "temporary";
 
   dq->enqueue_front(dq, STR, str);

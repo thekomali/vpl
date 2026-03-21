@@ -4,19 +4,19 @@
 // ============================================
 // Forward declarations (what this module provides)
 // ============================================
-static bool enqueue_front(dequell_t *self, etype_t etype, void *value);
+static bool enqueue_front(DequeLL *self, etype_t etype, void *value);
 
-static bool enqueue_rear(dequell_t *self, etype_t etype, void *value);
+static bool enqueue_rear(DequeLL *self, etype_t etype, void *value);
 
-static element_t dequeue_front(dequell_t *self);
+static element_t dequeue_front(DequeLL *self);
 
-static element_t dequeue_rear(dequell_t *self);
+static element_t dequeue_rear(DequeLL *self);
 
-static const element_t* peek_front(dequell_t *self);
+static const element_t* peek_front(DequeLL *self);
 
-static const element_t* peek_rear(dequell_t *self);
+static const element_t* peek_rear(DequeLL *self);
 
-static bool is_empty(dequell_t *self);
+static bool is_empty(DequeLL *self);
 
 // UTILITY FUNCTION
 static dnode_t* new_node(etype_t etype, void *val);
@@ -25,8 +25,8 @@ static dnode_t* new_node(etype_t etype, void *val);
 // ============================================
 // Public API
 // ============================================
-dequell_t* dequell_init() {
-  dequell_t *dqll = calloc(1, sizeof(dequell_t));
+DequeLL* dequell_init() {
+  DequeLL *dqll = calloc(1, sizeof(DequeLL));
   if (!dqll) return NULL;
 
   // assign values
@@ -47,7 +47,7 @@ dequell_t* dequell_init() {
 }
 
 
-void dequell_free(dequell_t **dqll) {
+void dequell_free(DequeLL **dqll) {
   if (!dqll || !(*dqll)) return;
 
   dnode_t* curr = (* dqll)->head;
@@ -63,7 +63,7 @@ void dequell_free(dequell_t **dqll) {
     free(to_del);   // free the node
   }
 
-  // finally free dequell_t struct
+  // finally free DequeLL struct
   free(* dqll);
   *dqll = NULL;
 }
@@ -72,7 +72,7 @@ void dequell_free(dequell_t **dqll) {
 // ============================================
 // Core Function Implementation
 // ============================================
-static bool enqueue_front(dequell_t *self, etype_t etype, void *value) {
+static bool enqueue_front(DequeLL *self, etype_t etype, void *value) {
   if (!self || !value) return false;
 
   // create a new node and assign value
@@ -95,7 +95,7 @@ static bool enqueue_front(dequell_t *self, etype_t etype, void *value) {
 }
 
 
-static bool enqueue_rear(dequell_t *self, etype_t etype, void *value) {
+static bool enqueue_rear(DequeLL *self, etype_t etype, void *value) {
   if (!self || !value) return false;
 
   // create a new node and assign value
@@ -118,7 +118,7 @@ static bool enqueue_rear(dequell_t *self, etype_t etype, void *value) {
 }
 
 
-static element_t dequeue_front(dequell_t *self) {
+static element_t dequeue_front(DequeLL *self) {
   if (!self || is_empty(self)) return (element_t){0};
 
   dnode_t *pop = self->head;
@@ -138,7 +138,7 @@ static element_t dequeue_front(dequell_t *self) {
 }
 
 
-static element_t dequeue_rear(dequell_t *self) {
+static element_t dequeue_rear(DequeLL *self) {
   if (!self || is_empty(self)) return (element_t){0};
 
   dnode_t *pop = self->tail;
@@ -158,21 +158,21 @@ static element_t dequeue_rear(dequell_t *self) {
 }
 
 
-static const element_t* peek_front(dequell_t *self) {
+static const element_t* peek_front(DequeLL *self) {
   if (!self || is_empty(self)) return NULL;
 
   return &self->head->data;
 }
 
 
-static const element_t* peek_rear(dequell_t *self) {
+static const element_t* peek_rear(DequeLL *self) {
   if (!self || is_empty(self)) return NULL;
 
   return &self->tail->data;
 }
 
 
-static bool is_empty(dequell_t *self) {
+static bool is_empty(DequeLL *self) {
   return !self || self->size == 0;
 }
 
