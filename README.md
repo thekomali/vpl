@@ -28,6 +28,9 @@
 
 <h6> 👾 NON-LINEAR DATA STRUCTURES </h6>
 
+| Data Structure | Version | Notes |
+|----------------|---------|-------|
+| binary tree | v0.0 | - |
 
 ---
 
