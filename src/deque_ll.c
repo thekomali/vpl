@@ -1,5 +1,4 @@
 #include "../include/vpl/deque_ll.h"
-#include <string.h>
 
 // ============================================
 // Forward declarations (what this module provides)
