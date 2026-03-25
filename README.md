@@ -30,7 +30,7 @@
 
 | Data Structure | Version | Notes |
 |----------------|---------|-------|
-| binary tree | v0.0 | - |
+| <a href="include/vpl/binary_tree.h">Binary tree</a> | v0.0 | - |
 
 ---
 
