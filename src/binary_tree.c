@@ -1,4 +1,4 @@
-#include "../include/vpl/binary_tree.h"\
+#include "../include/vpl/binary_tree.h"
 
 // ============================================
 // Forward declarations (what this module provides)
@@ -15,21 +15,10 @@ static void inorder(BinaryTree *bt);
 
 static void postorder(BinaryTree *bt);
 
+static void levelorder(BinaryTree *bt);
+
 // UTILITY FUNCTION
 static void print_element(element_t ele);
-
-// TNodeStack ASSOCIATED FUNCTIONS
-static TNodeStack* tnodestack_init(int capacity);
-
-static void push(TNodeStack *st, TNode *node);
-
-static TNode* pop(TNodeStack *st);
-
-static TNode* peek(TNodeStack *st);
-
-static bool is_empty(TNodeStack *st);
-
-static bool is_full(TNodeStack *st);
 
 
 // ============================================
@@ -50,6 +39,7 @@ BinaryTree* binarytree_init() {
   bt->preorder = preorder;
   bt->inorder = inorder;
   bt->postorder = postorder;
+  bt->levelorder = levelorder;
 
   return bt;
 }
@@ -122,25 +112,32 @@ static void inorder(BinaryTree *bt) {
 
   TNode *curr = bt->root;
 
+  // we have to visit the left subtree before printing the node
   while (true) {
-    // step 1: push the curr node into the stack, until curr->left becomes NULL
-    if (curr != NULL) {
+    // step 1: traverse along the left link until the end is reached
+    while (curr->left != NULL) {
       st->push(st, curr);
       curr = curr->left;
     }
-    else {
-      // case 2: if stack is empty return
-      if (st->is_empty(st)) break;
 
-      // step 3: pop the element from the stack
-      curr = st->pop(st);
-
-      // step 4: print the element
+    // step 2: check if last node has right link; if not
+    while (curr->right == NULL) {
+      // step 2(a): print the element
       print_element(curr->data);
 
-      // step 5 : update the curr to right link
-      curr = curr->right;
+      // step 2(b): check for exit condition
+      if (st->is_empty(st)) return;
+
+      // step 2(c): pop a node from stack and update curr
+      curr = st->pop(st);
     }
+
+    // step 3: check if last node has right link, if yes,
+    // step 3(a): print the element
+    print_element(curr->data);
+
+    // step 3(b): update curr to right link
+    curr = curr->right;
   }
 }
 
@@ -153,38 +150,66 @@ static void postorder(BinaryTree *bt) {
   if (!st) return;
 
   TNode *curr = bt->root;
-  TNode *tmp = NULL;
+  TNode *previous_visited = NULL;
 
-  while (curr != NULL || !st->is_empty(st)) {
-    // step 1: traverse along left link & push it to stack until NULL
-    if (curr != NULL) {
+  // we have to visit left and right subtree, before printing the node
+  while (true) {
+    // step 1: traverse along the left link until the end is reached
+    while (curr->left != NULL) {
       st->push(st, curr);
       curr = curr->left;
     }
-    else {
-      // step 2: check if right link is present
-      tmp = st->peek(st)->right;
 
-      if (tmp == NULL) {
-        // step 4: pop a node from stack if right link is not present
-        tmp = st->pop(st);
+    // step 2: check if last node has right link or
+    //         previous node is right link of curr node: if yes
+    //         this check prevent entering the same right link again
+    while (curr->right == NULL || curr->right == previous_visited) {
+      // step 2(a): print the element
+      print_element(curr->data);
 
-        // step 5: print the element
-        print_element(tmp->data);
+      // step 2(b): update previous visited node with curr node
+      previous_visited = curr;
 
-        // step 6: if tmp is the right link of the node in stack
-        while (!st->is_empty(st) && tmp == st->peek(st)->right) {
-          // step 7: then pop the node from stack & print it
-          tmp = st->pop(st);
-          print_element(tmp->data);
-        }
-      }
-      else {
-        // step 3: update the curr to right link
-        curr = tmp;
-      }
+      // step 2(c): check for exit condition
+      if (st->is_empty(st)) return;
+
+      // step 2(d): pop a node from stack and update curr
+      curr = st->pop(st);
     }
-  } // while
+
+    // step 3: check if last node has right link: if yes
+    // step 3(a): push the element to stack
+    st->push(st, curr);
+
+    // step 3(b): update the curr with right link
+    curr = curr->right;
+  }
+}
+
+
+static void levelorder(BinaryTree *bt) {
+  if (!bt || !bt->root) return;
+
+  // initialize queue
+  TNodeQueue *q = tnodequeue_init(bt->size);
+  if (!q) return;
+
+  TNode *curr = NULL;
+
+  // step 1: add the root node to queue
+  q->enqueue(q, bt->root);
+
+  while (!q->is_empty(q)) {
+    // step 2: dequeue the element from queue
+    curr = q->dequeue(q);
+
+    // step 3: print the element
+    print_element(curr->data);
+
+    // step 4: enqueue left and right link if not null
+    if (curr->left)  q->enqueue(q, curr->left);
+    if (curr->right) q->enqueue(q, curr->right);
+  }
 }
 
 
@@ -234,56 +259,4 @@ TNode* new_node(etype_t etype, void *val) {
 }
 
 
-// ==============================================
-// TNode Stack Associated Functions Implementation
-// ==============================================
-static TNodeStack* tnodestack_init(int capacity) {
-  if (capacity <= 0) return NULL;
 
-  // allocate memory for the struct
-  TNodeStack *st = calloc(1, sizeof(TNodeStack) + (sizeof(TNode *) * (size_t)capacity));
-  if (!st) return NULL;
-
-  // initialize values
-  st->top = -1;
-  st->capacity = capacity;
-
-  st->push = push;
-  st->pop = pop;
-  st->peek = peek;
-  st->is_empty = is_empty;
-  st->is_full  = is_full;
-
-  return st;
-}
-
-
-static void push(TNodeStack *st, TNode *node) {
-  if (!st || !node || is_full(st)) return;
-
-  st->tnodes[++st->top] = node;
-}
-
-
-static TNode* pop(TNodeStack *st) {
-  if (!st || is_empty(st)) return NULL;
-
-  return st->tnodes[st->top--];
-}
-
-
-static TNode* peek(TNodeStack *st) {
-  if (!st || is_empty(st)) return NULL;
-
-  return st->tnodes[st->top];
-}
-
-
-static bool is_empty(TNodeStack *st) {
-  return (!st || st->top == -1);
-}
-
-
-static bool is_full(TNodeStack *st) {
-  return (st->top == (st->capacity - 1));
-}

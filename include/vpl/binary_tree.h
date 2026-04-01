@@ -1,6 +1,6 @@
 #pragma once
 
-#include "util.h"
+#include "helpers/binary_tree_helpers.h"
 
 /**
  * @file binary_tree.h
@@ -29,33 +29,13 @@ typedef struct BinaryTree {
   /// Postorder non-recursive traversal
   void (* postorder)(struct BinaryTree *bt);
 
+  /// Level Order non-recursive traversal
+  void (* levelorder)(struct BinaryTree *bt);
+
   TNode *root;     ///< points to the root node of the tree
   int size;        ///< no of nodes in the tree
 } BinaryTree;
 
-
-
-/// Struct representation of Stack to hold TNodes (use in non-recursive traversal of tree)
-typedef struct TNodeStack {
-  /// Push element into stack
-  void (* push)(struct TNodeStack *st, TNode *node);
-
-  /// Pop element from stack
-  TNode* (* pop)(struct TNodeStack *st);
-
-  /// Peek the top element
-  TNode* (* peek)(struct TNodeStack *st);
-
-  /// Is stack empty?
-  bool (* is_empty)(struct TNodeStack *st);
-
-  /// Is stack full?
-  bool (* is_full)(struct TNodeStack *st);
-
-  int top;          ///< points to index of top element
-  int capacity;     ///< max elements the stack can hold
-  TNode *tnodes[];  ///< flexiable array member - array of pointers to TNode
-} TNodeStack;
 
 
 // ======================

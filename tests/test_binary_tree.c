@@ -52,5 +52,9 @@ int main() {
   bt->postorder(bt);
   puts(" ");
 
+  printf("levelorder non-recurv: ");
+  bt->levelorder(bt);
+  puts(" ");
+
   return 0;
 }

@@ -13,17 +13,17 @@ if(NOT CUNIT_LIB)
 endif()
 
 # spedify compiler flags
-# set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Wextra -Werror")
-# set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wundef -Wshadow -Wpointer-arith")
-# set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wcast-align -Wstrict-prototypes")
-# set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wstrict-overflow=5")
-# set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wconversion -Wunreachable-code")
-# set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fsanitize=address")
-# set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fsanitize=undefined")
-# set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fsanitize=integer-divide-by-zero")
-# set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fsanitize=null")
-# set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fsanitize=signed-integer-overflow")
-# set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fsanitize-address-use-after-scope")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Wextra -Werror")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wundef -Wshadow -Wpointer-arith")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wcast-align -Wstrict-prototypes")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wstrict-overflow=5")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wconversion -Wunreachable-code")
+#set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fsanitize=address")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fsanitize=undefined")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fsanitize=integer-divide-by-zero")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fsanitize=null")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fsanitize=signed-integer-overflow")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fsanitize-address-use-after-scope")
 
 
 # specify include directory
@@ -40,7 +40,9 @@ set(SOURCES
     src/queue_ll.c
     src/deque.c
     src/deque_ll.c
+
     src/binary_tree.c
+    src/helpers/binary_tree_helpers.c
 )
 
 # create a static library from the specified source files
